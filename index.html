@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Daily Check‑In</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="app-header" role="banner">
+  <h1>Daily Check‑In</h1>
+</header>
+
+<main class="container" role="main">
+  <section class="card checkin" aria-labelledby="checkin-title">
+    <h2 id="checkin-title">Today’s Mood</h2>
+    <div class="mood-list" role="radiogroup" aria-label="Choose your mood">
+      <button class="mood" data-id="ecstatic" aria-label="Ecstatic" role="radio" aria-checked="false">🤩</button>
+      <button class="mood" data-id="happy" aria-label="Happy" role="radio" aria-checked="false">😊</button>
+      <button class="mood" data-id="calm" aria-label="Calm" role="radio" aria-checked="false">😠</button>
+      <button class="mood" data-id="neutral" aria-label="Neutral" role="radio" aria-checked="false">😨</button>
+ <!--     <button class="mood" data-id="anxious" aria-label="Anxious" role="radio" aria-checked="false">😟</button>-->
+      <button class="mood" data-id="sad" aria-label="Sad" role="radio" aria-checked="false">😭</button>
+      <button class="mood" data-id="exhausted" aria-label="Exhausted" role="radio" aria-checked="false">🥱</button>
+    </div>
+    <div class="note-row">
+      <label for="noteInput">Optional note</label>
+      <textarea id="noteInput" maxlength="140" placeholder="Up to 140 characters" aria-describedby="noteHelp"></textarea>
+      <div id="noteHelp" class="help">You’re doing great. Share as much or as little as you like.</div>
+    </div>
+    <button id="saveEntry" class="primary">Save today’s check‑in</button>
+    <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="card recommend" aria-labelledby="recommend-title" id="recommend-section">
+    <h2 id="recommend-title">Gentle Recommendations</h2>
+    <div class="recommendations">
+      <div class="recommend quote">
+        <h3>Motivational Quote</h3>
+        <blockquote id="quoteText"></blockquote>
+      </div>
+      <div class="recommend music">
+        <h3>Calming Music</h3>
+        <ul id="musicList" class="list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card history" aria-labelledby="history-title" id="history-section">
+    <div class="history-header">
+      <h2 id="history-title">Mood History</h2>
+      <button id="clearHistory" class="danger" aria-label="Clear history">Clear History</button>
+    </div>
+    <ul id="historyList" class="history-list" aria-label="Mood entries"></ul>
+  </section>
+
+  
+</main>
+
+<footer class="app-footer" role="contentinfo">
+  <small>Your data stays on this device.</small>
+</footer>
+
+<script src="app.js" defer></script>
+</body>
+</html>
