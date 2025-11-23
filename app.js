@@ -16,8 +16,22 @@ function saveEntry(entry) {
 }
 
 function formatDateTime(ts) {
-  try { return new Date(ts).toLocaleString() } catch { return '' }
+  try {
+    const d = new Date(ts);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+
+    const hrs = String(d.getHours()).padStart(2, '0');
+    const mins = String(d.getMinutes()).padStart(2, '0');
+    const secs = String(d.getSeconds()).padStart(2, '0');
+
+    return `${day}-${month}-${year} ${hrs}:${mins}:${secs}`;
+  } catch {
+    return '';
+  }
 }
+
 function average(arr) { if (!arr.length) return 0; return Math.round((arr.reduce((a,b)=>a+b,0)/arr.length)*100)/100 }
 function renderHistoryList() {
   const list = document.getElementById('historyList')
@@ -102,10 +116,10 @@ async function renderRecommendations(quoteEl, musicListEl, entries = getEntries(
 const moods = [
   { id: 'ecstatic', label: 'Ecstatic', emoji: '🤩', score: 5 },
   { id: 'happy', label: 'Happy', emoji: '😊', score: 4 },
-  { id: 'calm', label: 'Calm', emoji: '😌', score: 3 },
-  { id: 'neutral', label: 'Neutral', emoji: '😐', score: 3 },
-  { id: 'anxious', label: 'Anxious', emoji: '😟', score: 2 },
-  { id: 'sad', label: 'Sad', emoji: '😢', score: 1 },
+  { id: 'calm', label: 'Calm', emoji: '😠', score: 3 },
+  { id: 'neutral', label: 'Neutral', emoji: '😨', score: 3 },
+ //  { id: 'anxious', label: 'Anxious', emoji: '😟', score: 2 },//
+  { id: 'sad', label: 'Sad', emoji: '😭', score: 1 },
   { id: 'exhausted', label: 'Exhausted', emoji: '🥱', score: 1 }
 ]
 let selectedMood = null
