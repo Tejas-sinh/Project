@@ -84,13 +84,13 @@ async function fetchQuote(tag) {
   return offline[Math.floor(Math.random()*offline.length)]
 }
 const MUSIC_BY_MOOD = {
-  ecstatic: { title: 'Upbeat Happy Mix – YouTube', url: 'https://www.youtube.com/results?search_query=upbeat+happy+instrumental+playlist' },
-  happy: { title: 'Happy Instrumental – YouTube', url: 'https://www.youtube.com/results?search_query=happy+instrumental+playlist' },
-  calm: { title: 'Peaceful Piano – YouTube', url: 'https://www.youtube.com/results?search_query=peaceful+piano+playlist' },
-  neutral: { title: 'Lo‑Fi Focus – YouTube', url: 'https://www.youtube.com/results?search_query=lofi+focus+playlist' },
-  anxious: { title: 'Meditation & Breath – YouTube', url: 'https://www.youtube.com/results?search_query=meditation+breathing+music+playlist' },
-  sad: { title: 'Comforting Acoustic – YouTube', url: 'https://www.youtube.com/results?search_query=comforting+acoustic+playlist' },
-  exhausted: { title: 'Sleep & Rest – YouTube', url: 'https://www.youtube.com/results?search_query=sleep+music+playlist' }
+  ecstatic: { title: 'Upbeat Happy Mix – YouTube', url: 'https://open.spotify.com/album/2qlACQ7bcc67sbjWCiaDL7' },
+  happy: { title: 'Happy Instrumental – YouTube', url: 'https://youtu.be/TWcyIpul8OE' },
+  angry: { title: 'Calm – YouTube', url: 'https://youtu.be/O9wjmEhMKFw' },
+  shocked: { title: 'Lo‑Fi Focus – YouTube', url: 'https://youtu.be/7maJOI3QMu0' },
+  //anxious: { title: 'Meditation & Breath – YouTube', url: 'https://www.youtube.com/results?search_query=meditation+breathing+music+playlist' },//
+  sad: { title: 'Comforting Acoustic – YouTube', url: 'https://youtu.be/B1T-MKTxKN0' },
+  boring: { title: 'Peaceful  – YouTube', url: 'https://youtu.be/v7HaOYWdb4o' }
 }
 function musicForMood(moodId) { return MUSIC_BY_MOOD[moodId] || MUSIC_BY_MOOD['neutral'] }
 function firstTitle(r) { return r.collectionName || r.trackName || 'Album' }
@@ -116,11 +116,11 @@ async function renderRecommendations(quoteEl, musicListEl, entries = getEntries(
 const moods = [
   { id: 'ecstatic', label: 'Ecstatic', emoji: '🤩', score: 5 },
   { id: 'happy', label: 'Happy', emoji: '😊', score: 4 },
-  { id: 'calm', label: 'Calm', emoji: '😠', score: 3 },
-  { id: 'neutral', label: 'Neutral', emoji: '😨', score: 3 },
+  { id: 'angry', label: 'Angry', emoji: '😠', score: 3 },
+  { id: 'shocked', label: 'Shocked', emoji: '😨', score: 3 },
  //  { id: 'anxious', label: 'Anxious', emoji: '😟', score: 2 },//
   { id: 'sad', label: 'Sad', emoji: '😭', score: 1 },
-  { id: 'exhausted', label: 'Exhausted', emoji: '🥱', score: 1 }
+  { id: 'boring', label: 'Boring', emoji: '🥱', score: 1 }
 ]
 let selectedMood = null
 const el = {
