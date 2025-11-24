@@ -98,10 +98,30 @@ async function renderRecommendations(quoteEl, musicListEl, entries = getEntries(
   const p = patternState(entries)
   quoteEl.textContent = ''
   musicListEl.innerHTML = ''
-  const tag = p.negative ? 'calm' : 'inspirational'
-  const q = await fetchQuote(tag)
-  quoteEl.textContent = q
   const last = entries.slice().sort((a,b)=>b.timestamp-a.timestamp)[0]
+  if (last && last.mood === 'ecstatic') {
+    quoteEl.textContent = 'Keep this energy — your joy is a sign you’re on the right path.'
+  }
+  if (last && last.mood === 'happy') {
+    quoteEl.textContent = 'Small moments of peace create big waves of growth.'
+  }
+  if (last && last.mood === 'angry') {
+    quoteEl.textContent = 'Pause. Breathe. You are stronger than the moment you’re in.'
+  }
+  if (last && last.mood === 'shocked') {
+    quoteEl.textContent = 'It’s okay to feel overwhelmed — you’re safe, and you’ll find your balance again.'
+  }
+  if (last && last.mood === 'sad') {
+    quoteEl.textContent = 'Even the heaviest clouds eventually let the sun through.'
+  }
+  if (last && last.mood === 'boring') {
+    quoteEl.textContent = 'Rest isn’t quitting. It’s preparing your strength for what’s next.'
+  }
+  if (!quoteEl.textContent) {
+    const tag = p.negative ? 'calm' : 'inspirational'
+    const q = await fetchQuote(tag)
+    quoteEl.textContent = q
+  }
   const item = musicForMood(last ? last.mood : 'neutral')
   const li = document.createElement('li')
   const a = document.createElement('a')
